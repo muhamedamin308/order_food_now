@@ -7,5 +7,7 @@ class AppColors {
   static Color secondary = Color(0xff306D29);
   static Color secondaryBackground = Color(0xffE7E1B1);
   static Color hintText = Color(0xff828282);
+  static Color moreGeryText = Color(0xff9d9d9d);
   static Color error = Color(0xffD32F2F);
+  static Color transparent = Color(0x00000000);
 }
