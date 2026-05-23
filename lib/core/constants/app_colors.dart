@@ -12,4 +12,5 @@ class AppColors {
   static Color error = Color(0xffD32F2F);
   static Color transparent = Color(0x00000000);
   static Color white = Color(0xffffffff);
+  static Color black = Color(0xff000000);
 }
