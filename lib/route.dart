@@ -22,14 +22,19 @@ class _RootState extends State<Root> {
   @override
   void initState() {
     super.initState();
-    _pages = [HomePage(), CartPage(), OrderPage(), ProfilePage()];
+    _pages = <Widget>[HomePage(), CartPage(), OrderPage(), ProfilePage()];
     _pageController = PageController(initialPage: currentPage);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView(controller: _pageController, children: _pages),
+      backgroundColor: Colors.white,
+      body: PageView(
+        controller: _pageController,
+        physics: const NeverScrollableScrollPhysics(),
+        children: _pages,
+      ),
       bottomNavigationBar: Container(
         padding: const EdgeInsets.symmetric(vertical: 10),
         decoration: BoxDecoration(
