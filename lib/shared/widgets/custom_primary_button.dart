@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:order_now/core/constants/app_colors.dart';
 
 class CustomPrimaryButton extends StatelessWidget {
   final String text;

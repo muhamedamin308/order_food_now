@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:order_now/features/auth/presentation/pages/login_page.dart';
-import 'package:order_now/features/auth/presentation/pages/signup_page.dart';
-import 'package:order_now/splash_page.dart';
+import 'package:order_now/route.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,10 +13,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: .fromSeed(seedColor: Colors.indigo),
-      ),
-      home: SignupPage(),
+      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.indigo)),
+      home: Root(),
     );
   }
 }
