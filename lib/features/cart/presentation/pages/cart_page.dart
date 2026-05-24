@@ -18,6 +18,7 @@ class _CartPageState extends State<CartPage> {
   final List<CartItemModel> _items = List.generate(
     6,
     (i) => CartItemModel(
+      id: 'item_$i',
       image: 'assets/images/burger_logo.png',
       title: 'Hamburger',
       description: 'Veggie Burger',
@@ -72,10 +73,12 @@ class _CartPageState extends State<CartPage> {
                         return Padding(
                           padding: const EdgeInsets.only(bottom: 12),
                           child: CartItemView(
+                            id: item.id,
                             image: item.image,
                             title: item.title,
                             description: item.description,
                             quantity: item.quantity,
+                            price: item.price,
                             onIncrement: () => _increment(index),
                             onDecrement: () => _decrement(index),
                             onRemove: () => _remove(index),
