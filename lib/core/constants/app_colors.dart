@@ -2,7 +2,7 @@ import 'dart:ui';
 
 class AppColors {
   AppColors._();
-  static Color primary = Color(0xff0D530E);
+  static Color primary = Color(0xff111844);
   static Color background = Color(0xffFBF5DD);
   static Color secondary = Color(0xff306D29);
   static Color secondaryBackground = Color(0xffE7E1B1);
@@ -10,6 +10,7 @@ class AppColors {
   static Color moreGeryText = Color(0xff9d9d9d);
   static Color mainText = Color(0xff333333);
   static Color error = Color(0xffD32F2F);
+  static Color success = Color(0xff2E7D32);
   static Color transparent = Color(0x00000000);
   static Color white = Color(0xffffffff);
   static Color black = Color(0xff000000);

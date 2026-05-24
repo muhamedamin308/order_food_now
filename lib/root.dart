@@ -55,7 +55,7 @@ class _RootState extends State<Root> {
           elevation: 0,
           backgroundColor: AppColors.transparent,
           type: BottomNavigationBarType.fixed,
-          selectedItemColor: AppColors.background,
+          selectedItemColor: AppColors.white,
           unselectedItemColor: AppColors.moreGeryText,
 
           items: [
