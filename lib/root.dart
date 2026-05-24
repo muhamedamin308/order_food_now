@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:order_now/features/auth/presentation/pages/profile_page.dart';
 import 'package:order_now/features/cart/presentation/pages/cart_page.dart';
 import 'package:order_now/features/home/presentation/pages/home_page.dart';
-import 'package:order_now/features/order/presentation/pages/order_page.dart';
+import 'package:order_now/features/order/presentation/pages/order_history_page.dart';
 
 import 'core/constants/app_colors.dart';
 
@@ -22,7 +22,12 @@ class _RootState extends State<Root> {
   @override
   void initState() {
     super.initState();
-    _pages = <Widget>[HomePage(), CartPage(), OrderPage(), ProfilePage()];
+    _pages = <Widget>[
+      HomePage(),
+      CartPage(),
+      OrderHistoryPage(),
+      ProfilePage(),
+    ];
     _pageController = PageController(initialPage: currentPage);
   }
 
