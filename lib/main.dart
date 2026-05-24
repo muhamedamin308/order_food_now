@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:order_now/route.dart';
+import 'package:order_now/root.dart';
+import 'package:order_now/splash_page.dart';
 
 void main() {
   runApp(const MyApp());

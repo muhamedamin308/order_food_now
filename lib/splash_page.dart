@@ -3,14 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:order_now/core/constants/app_colors.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+class SplashPage extends StatefulWidget {
+  const SplashPage({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<SplashPage> createState() => _SplashPageState();
 }
 
-class _SplashScreenState extends State<SplashScreen>
+class _SplashPageState extends State<SplashPage>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _textFadeIn;
@@ -31,13 +31,13 @@ class _SplashScreenState extends State<SplashScreen>
       curve: const Interval(0.0, 0.5, curve: Curves.easeOut),
     );
 
-    _burgerSlideUp = Tween<Offset>(
-      begin: const Offset(0, 0.3),
-      end: Offset.zero,
-    ).animate(CurvedAnimation(
-      parent: _controller,
-      curve: const Interval(0.3, 1.0, curve: Curves.easeOut),
-    ));
+    _burgerSlideUp =
+        Tween<Offset>(begin: const Offset(0, 0.3), end: Offset.zero).animate(
+          CurvedAnimation(
+            parent: _controller,
+            curve: const Interval(0.3, 1.0, curve: Curves.easeOut),
+          ),
+        );
 
     _burgerFadeIn = CurvedAnimation(
       parent: _controller,
@@ -67,7 +67,8 @@ class _SplashScreenState extends State<SplashScreen>
               child: const Text(
                 'Order Now',
                 style: TextStyle(
-                  fontFamily: 'Chewy', // swap with your preferred rounded/chunky font
+                  fontFamily:
+                      'Chewy', // swap with your preferred rounded/chunky font
                   fontSize: 52,
                   fontWeight: FontWeight.w900,
                   color: Colors.white,
