@@ -61,7 +61,7 @@ class _RootState extends State<Root> {
           backgroundColor: AppColors.transparent,
           type: BottomNavigationBarType.fixed,
           selectedItemColor: AppColors.white,
-          unselectedItemColor: AppColors.moreGeryText,
+          unselectedItemColor: AppColors.hintText,
 
           items: [
             BottomNavigationBarItem(
