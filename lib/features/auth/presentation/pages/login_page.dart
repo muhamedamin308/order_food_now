@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:order_now/core/constants/app_colors.dart';
+import 'package:order_now/features/auth/presentation/pages/signup_page.dart';
+import 'package:order_now/root.dart';
 
 import '../../../../shared/widgets/custom_primary_button.dart';
 import '../../../../shared/widgets/custom_text_field.dart';
@@ -26,19 +28,16 @@ class _LoginPageState extends State<LoginPage> {
 
   void _handleLogin() {
     if (_formKey.currentState!.validate()) {
-      // Implement your login logic here
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Logging in...')),
-      );
+      Navigator.of(
+        context,
+      ).pushReplacement(MaterialPageRoute(builder: (context) => const Root()));
     }
   }
 
   void _navigateToSignUp() {
-    // Navigate to sign up page
-    // Navigator.pushNamed(context, '/signup');
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Navigating to Sign Up...')),
-    );
+    Navigator.of(
+      context,
+    ).pushReplacement(MaterialPageRoute(builder: (context) => const SignupPage()));
   }
 
   @override
@@ -67,7 +66,7 @@ class _LoginPageState extends State<LoginPage> {
                       style: Theme.of(context).textTheme.displayLarge?.copyWith(
                         fontWeight: FontWeight.bold,
                         color: AppColors.primary,
-                        fontFamily: 'Chewy'
+                        fontFamily: 'Chewy',
                       ),
                     ),
                   ),
@@ -99,9 +98,12 @@ class _LoginPageState extends State<LoginPage> {
                     label: 'Password',
                     hint: 'Enter your password',
                     prefixIcon: Icons.lock_outline,
-                    suffixIcon: _obscurePassword ? Icons.visibility_off : Icons.visibility,
+                    suffixIcon: _obscurePassword
+                        ? Icons.visibility_off
+                        : Icons.visibility,
                     obscureText: _obscurePassword,
-                    onSuffixIconPressed: () => setState(() => _obscurePassword = !_obscurePassword),
+                    onSuffixIconPressed: () =>
+                        setState(() => _obscurePassword = !_obscurePassword),
                     isRequired: true,
                     validator: (value) {
                       if (value?.isEmpty ?? true) return 'Password is required';
@@ -129,11 +131,12 @@ class _LoginPageState extends State<LoginPage> {
                         onTap: _navigateToSignUp,
                         child: Text(
                           'Sign Up',
-                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: AppColors.primary,
-                            fontWeight: FontWeight.bold,
-                            decoration: TextDecoration.underline,
-                          ),
+                          style: Theme.of(context).textTheme.bodyMedium
+                              ?.copyWith(
+                                color: AppColors.primary,
+                                fontWeight: FontWeight.bold,
+                                decoration: TextDecoration.underline,
+                              ),
                         ),
                       ),
                     ],

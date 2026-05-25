@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:order_now/root.dart';
 import 'package:order_now/splash_page.dart';
 
 void main() {
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.indigo)),
-      home: Root(),
+      home: SplashPage(),
     );
   }
 }

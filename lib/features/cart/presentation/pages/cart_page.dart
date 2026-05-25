@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:order_now/core/constants/app_colors.dart';
 import 'package:order_now/features/cart/domain/model/cart_item_model.dart';
 import 'package:order_now/features/cart/presentation/widgets/cart_item_view.dart';
+import 'package:order_now/features/payment/presentation/pages/checkout_page.dart';
 import 'package:order_now/shared/widgets/custom_button.dart';
 import 'package:order_now/shared/widgets/custom_text.dart';
 
@@ -155,7 +156,17 @@ class _BottomCheckoutBar extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(width: 160, child: CustomButton(text: 'Checkout')),
+          SizedBox(
+            width: 160,
+            child: CustomButton(
+              text: 'Checkout',
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => CheckoutPage()),
+                );
+              },
+            ),
+          ),
         ],
       ),
     );
