@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:order_now/root.dart';
+import 'package:flutter/services.dart';
+import 'package:order_now/core/constants/app_colors.dart';
+import 'package:order_now/features/auth/presentation/pages/signup_page.dart';
 import 'package:order_now/splash_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(const MyApp());
 }
 
@@ -14,8 +18,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.indigo)),
-      home: Root(),
+      theme: ThemeData(
+        colorScheme: .fromSeed(seedColor: Colors.indigo),
+        splashColor: AppColors.transparent,
+      ),
+      home: SplashPage(),
     );
   }
 }

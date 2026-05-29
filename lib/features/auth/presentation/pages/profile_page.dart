@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:order_now/core/constants/app_colors.dart';
+import 'package:order_now/features/auth/presentation/pages/edit_profile_page.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -343,7 +344,14 @@ class _MenuItem extends StatelessWidget {
     return Column(
       children: [
         InkWell(
-          onTap: () {},
+          onTap: () {
+            if (label == 'Edit Profile') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => EditProfilePage()),
+              );
+            }
+          },
           borderRadius: BorderRadius.circular(16),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
