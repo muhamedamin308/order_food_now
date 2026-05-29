@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:order_now/core/constants/app_colors.dart';
 import 'package:order_now/features/auth/presentation/pages/login_page.dart';
+import 'package:order_now/root.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -50,7 +51,7 @@ class _SplashPageState extends State<SplashPage>
     Future.delayed(const Duration(seconds: 3), () {
       if (mounted) {
         Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const LoginPage()),
+          MaterialPageRoute(builder: (context) => const Root()),
         );
       }
     });

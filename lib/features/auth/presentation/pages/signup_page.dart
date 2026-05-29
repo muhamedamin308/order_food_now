@@ -17,18 +17,14 @@ class _SignupPageState extends State<SignupPage> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController =
-      TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool _obscurePassword = true;
-  bool _obscureConfrimPassword = true;
 
   @override
   void dispose() {
     _nameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
-    _confirmPasswordController.dispose();
     super.dispose();
   }
 
@@ -128,28 +124,6 @@ class _SignupPageState extends State<SignupPage> {
                     isRequired: true,
                     validator: (value) {
                       if (value?.isEmpty ?? true) return 'Password is required';
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 8),
-                  CustomTextField(
-                    controller: _confirmPasswordController,
-                    label: 'Confirm Password',
-                    hint: 'Enter your password',
-                    prefixIcon: Icons.lock_outline,
-                    suffixIcon: _obscureConfrimPassword
-                        ? Icons.visibility_off
-                        : Icons.visibility,
-                    obscureText: _obscureConfrimPassword,
-                    onSuffixIconPressed: () => setState(
-                      () => _obscureConfrimPassword = !_obscureConfrimPassword,
-                    ),
-                    isRequired: true,
-                    validator: (value) {
-                      if (value?.isEmpty ?? true)
-                        return 'Confirm Password is required';
-                      if (value != _passwordController.text)
-                        return 'Passwords do not match';
                       return null;
                     },
                   ),

@@ -1,6 +1,7 @@
 // checkout_page.dart
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:order_now/core/constants/app_colors.dart';
 import 'package:order_now/features/home/presentation/pages/home_page.dart';
 import 'package:order_now/features/payment/presentation/widgets/address_cart.dart';
 import 'package:order_now/features/payment/presentation/widgets/delivery_selector.dart';
@@ -65,7 +66,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF7F7F7),
+      backgroundColor: AppColors.white,
       body: Column(
         children: [
           Expanded(

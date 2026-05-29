@@ -14,19 +14,39 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   static const List<Map<String, String>> categories = [
-    {'label': 'Pizza',    'emoji': '🍕'},
-    {'label': 'Burgers',  'emoji': '🍔'},
-    {'label': 'Sushi',    'emoji': '🍱'},
+    {'label': 'Pizza', 'emoji': '🍕'},
+    {'label': 'Burgers', 'emoji': '🍔'},
+    {'label': 'Sushi', 'emoji': '🍱'},
     {'label': 'Desserts', 'emoji': '🍰'},
-    {'label': 'Drinks',   'emoji': '🥤'},
+    {'label': 'Drinks', 'emoji': '🥤'},
   ];
 
   static const List<Map<String, dynamic>> products = [
-    {'name': 'Margherita Pizza',  'subtitle': "Wendy's Pizza",   'price': 12.99, 'rating': 4.9},
-    {'name': 'Cheeseburger',      'subtitle': "Burger Palace",   'price': 8.99,  'rating': 4.8},
-    {'name': 'California Roll',   'subtitle': "Tokyo Bites",     'price': 14.49, 'rating': 4.7},
-    {'name': 'Chocolate Cake',    'subtitle': "Sweet Treats",    'price': 6.99,  'rating': 4.6},
-    {'name': 'Lemonade',          'subtitle': "Freshco",         'price': 3.49,  'rating': 4.5},
+    {
+      'name': 'Margherita Pizza',
+      'subtitle': "Wendy's Pizza",
+      'price': 12.99,
+      'rating': 4.9,
+    },
+    {
+      'name': 'Cheeseburger',
+      'subtitle': "Burger Palace",
+      'price': 8.99,
+      'rating': 4.8,
+    },
+    {
+      'name': 'California Roll',
+      'subtitle': "Tokyo Bites",
+      'price': 14.49,
+      'rating': 4.7,
+    },
+    {
+      'name': 'Chocolate Cake',
+      'subtitle': "Sweet Treats",
+      'price': 6.99,
+      'rating': 4.6,
+    },
+    {'name': 'Lemonade', 'subtitle': "Freshco", 'price': 3.49, 'rating': 4.5},
   ];
 
   int _selectedCategory = 0;
@@ -50,12 +70,7 @@ class _HomePageState extends State<HomePage> {
               automaticallyImplyLeading: false,
               toolbarHeight: 148,
               flexibleSpace: SafeArea(
-                child: Column(
-                  children: [
-                    buildHeader(context),
-                    buildSearchBar(),
-                  ],
-                ),
+                child: Column(children: [HomeHeaderView(), SearchBarView()]),
               ),
             ),
 
@@ -100,8 +115,9 @@ class _HomePageState extends State<HomePage> {
                               boxShadow: isSelected
                                   ? [
                                       BoxShadow(
-                                        color: AppColors.primary
-                                            .withOpacity(0.3),
+                                        color: AppColors.primary.withOpacity(
+                                          0.3,
+                                        ),
                                         blurRadius: 8,
                                         offset: const Offset(0, 3),
                                       ),
@@ -112,11 +128,12 @@ class _HomePageState extends State<HomePage> {
                               children: [
                                 Text(
                                   categories[index]['emoji']!,
-                                  style: const TextStyle(fontSize: 14),
+                                  textScaler: TextScaler.linear(1.0),
                                 ),
                                 const SizedBox(width: 6),
                                 Text(
                                   categories[index]['label']!,
+                                  textScaler: TextScaler.linear(1.0),
                                   style: TextStyle(
                                     fontSize: 13,
                                     fontWeight: FontWeight.w600,
@@ -144,6 +161,7 @@ class _HomePageState extends State<HomePage> {
                   onPressed: () {},
                   child: Text(
                     'See all',
+                    textScaler: TextScaler.linear(1.0),
                     style: TextStyle(
                       color: AppColors.primary,
                       fontWeight: FontWeight.w600,
@@ -155,13 +173,14 @@ class _HomePageState extends State<HomePage> {
             ),
 
             // ── Products grid ──────────────────────────
-            buildSliverProducts(
+            SliverGridItemView(
               products: products,
               favorites: _favorites,
-              onFavoriteTap: (index) =>
-                  setState(() => _favorites.contains(index)
-                      ? _favorites.remove(index)
-                      : _favorites.add(index)),
+              onFavoriteTap: (index) => setState(
+                () => _favorites.contains(index)
+                    ? _favorites.remove(index)
+                    : _favorites.add(index),
+              ),
             ),
 
             const SliverToBoxAdapter(child: SizedBox(height: 24)),
@@ -189,6 +208,7 @@ class _SectionHeader extends StatelessWidget {
         children: [
           Text(
             title,
+            textScaler: TextScaler.linear(1.0),
             style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w700,
@@ -232,6 +252,7 @@ class _PromoBanner extends StatelessWidget {
                   ),
                   child: const Text(
                     'Limited offer 🔥',
+                    textScaler: TextScaler.linear(1.0),
                     style: TextStyle(
                       fontSize: 11,
                       color: Colors.white,
@@ -242,6 +263,7 @@ class _PromoBanner extends StatelessWidget {
                 const SizedBox(height: 8),
                 const Text(
                   'Get 20% off\nyour first order',
+                  textScaler: TextScaler.linear(1.0),
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w800,
