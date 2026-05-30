@@ -260,7 +260,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 borderRadius: BorderRadius.circular(18),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.04),
+                    color: Colors.black.withValues(alpha: .04),
                     blurRadius: 10,
                     offset: const Offset(0, 3),
                   ),
@@ -315,9 +315,9 @@ class _AvatarSection extends StatelessWidget {
               height: 96,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: AppColors.primary.withOpacity(0.1),
+                color: AppColors.primary.withValues(alpha: .1),
                 border: Border.all(
-                  color: AppColors.primary.withOpacity(0.25),
+                  color: AppColors.primary.withValues(alpha: 0.25),
                   width: 2,
                 ),
               ),
@@ -524,7 +524,7 @@ class _GenderSelector extends StatelessWidget {
                   boxShadow: isSelected
                       ? [
                           BoxShadow(
-                            color: AppColors.primary.withOpacity(0.3),
+                            color: AppColors.primary.withValues(alpha: 0.3),
                             blurRadius: 10,
                             offset: const Offset(0, 4),
                           ),
@@ -589,8 +589,8 @@ class _ActionRow extends StatelessWidget {
               height: 36,
               decoration: BoxDecoration(
                 color: isDestructive
-                    ? AppColors.error.withOpacity(0.08)
-                    : AppColors.primary.withOpacity(0.08),
+                    ? AppColors.error.withValues(alpha: 0.08)
+                    : AppColors.primary.withValues(alpha: 0.08),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Icon(icon, size: 17, color: color),
@@ -648,7 +648,7 @@ class _SaveBar extends StatelessWidget {
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 12,
             offset: const Offset(0, -4),
           ),
@@ -661,12 +661,12 @@ class _SaveBar extends StatelessWidget {
           height: 54,
           decoration: BoxDecoration(
             color: isSaving
-                ? AppColors.primary.withOpacity(0.7)
+                ? AppColors.primary.withValues(alpha: 0.7)
                 : AppColors.primary,
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
-                color: AppColors.primary.withOpacity(0.3),
+                color: AppColors.primary.withValues(alpha: 0.3),
                 blurRadius: 12,
                 offset: const Offset(0, 5),
               ),

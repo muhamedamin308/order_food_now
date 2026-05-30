@@ -7,7 +7,7 @@ class PaymentSelector extends StatelessWidget {
   final int selected;
   final void Function(int) onSelect;
 
-  const PaymentSelector({
+  const PaymentSelector({super.key, 
     required this.methods,
     required this.selected,
     required this.onSelect,
@@ -37,7 +37,7 @@ class PaymentSelector extends StatelessWidget {
                         height: 38,
                         decoration: BoxDecoration(
                           color: isSelected
-                              ? AppColors.primary.withOpacity(0.1)
+                              ? AppColors.primary.withValues(alpha: 0.1)
                               : Colors.grey.shade100,
                           borderRadius: BorderRadius.circular(10),
                         ),

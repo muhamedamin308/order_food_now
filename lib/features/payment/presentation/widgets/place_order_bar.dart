@@ -8,7 +8,7 @@ class PlaceOrderBar extends StatelessWidget {
   final double total;
   final VoidCallback onTap;
 
-  const PlaceOrderBar({required this.total, required this.onTap});
+  const PlaceOrderBar({super.key, required this.total, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class PlaceOrderBar extends StatelessWidget {
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.06),
+            color: Colors.black.withValues(alpha: 0.06),
             blurRadius: 12,
             offset: const Offset(0, -4),
           ),
@@ -38,7 +38,7 @@ class PlaceOrderBar extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
-                color: AppColors.primary.withOpacity(0.35),
+                color: AppColors.primary.withValues(alpha: 0.35),
                 blurRadius: 12,
                 offset: const Offset(0, 5),
               ),
@@ -68,7 +68,7 @@ class PlaceOrderBar extends StatelessWidget {
                   vertical: 4,
                 ),
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.2),
+                  color: Colors.white.withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(

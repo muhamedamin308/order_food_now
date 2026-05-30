@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:order_now/core/constants/app_colors.dart';
-import 'package:order_now/features/auth/presentation/pages/signup_page.dart';
+import 'package:order_now/features/auth/presentation/pages/login_page.dart';
 import 'package:order_now/splash_page.dart';
 
 void main() async {
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         colorScheme: .fromSeed(seedColor: Colors.indigo),
         splashColor: AppColors.transparent,
       ),
-      home: SplashPage(),
+      home: LoginPage(),
     );
   }
 }

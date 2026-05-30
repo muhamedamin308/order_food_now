@@ -1,6 +1,3 @@
-// ── Delivery Selector ──────────────────────────────────
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:order_now/core/constants/app_colors.dart';
 
@@ -39,7 +36,7 @@ class DeliverySelector extends StatelessWidget {
                 boxShadow: isSelected
                     ? [
                         BoxShadow(
-                          color: AppColors.primary.withOpacity(0.25),
+                          color: AppColors.primary.withValues(alpha: 0.25),
                           blurRadius: 10,
                           offset: const Offset(0, 4),
                         ),
@@ -63,7 +60,7 @@ class DeliverySelector extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 11,
                       color: isSelected
-                          ? Colors.white.withOpacity(0.75)
+                          ? Colors.white.withValues(alpha: 0.75)
                           : Colors.grey,
                     ),
                   ),

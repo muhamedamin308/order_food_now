@@ -21,7 +21,7 @@ class OrderHistoryItemView extends StatelessWidget {
         borderRadius: BorderRadius.circular(18),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.06),
+            color: Colors.black.withValues(alpha: .06),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -43,7 +43,7 @@ class OrderHistoryItemView extends StatelessWidget {
                     width: 80,
                     height: 80,
                     fit: BoxFit.contain,
-                    errorBuilder: (_, __, ___) => Container(
+                    errorBuilder: (_, _, _) => Container(
                       width: 80,
                       height: 80,
                       decoration: BoxDecoration(
@@ -210,7 +210,7 @@ class _StatusBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
+        color: color.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(

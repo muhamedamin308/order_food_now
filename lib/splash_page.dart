@@ -1,8 +1,5 @@
-// splash_screen.dart
-
 import 'package:flutter/material.dart';
 import 'package:order_now/core/constants/app_colors.dart';
-import 'package:order_now/features/auth/presentation/pages/login_page.dart';
 import 'package:order_now/root.dart';
 
 class SplashPage extends StatefulWidget {

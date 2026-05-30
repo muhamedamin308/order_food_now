@@ -1,6 +1,3 @@
-// ── Section wrapper ────────────────────────────────────
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SectionSliver extends StatelessWidget {
