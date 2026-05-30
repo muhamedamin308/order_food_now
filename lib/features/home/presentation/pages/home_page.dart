@@ -115,9 +115,7 @@ class _HomePageState extends State<HomePage> {
                               boxShadow: isSelected
                                   ? [
                                       BoxShadow(
-                                        color: AppColors.primary.withOpacity(
-                                          0.3,
-                                        ),
+                                        color: AppColors.primary.withValues(alpha: 0.3),
                                         blurRadius: 8,
                                         offset: const Offset(0, 3),
                                       ),
@@ -215,7 +213,7 @@ class _SectionHeader extends StatelessWidget {
               color: Colors.black87,
             ),
           ),
-          if (trailing != null) trailing!,
+          ?trailing,
         ],
       ),
     );
@@ -247,7 +245,7 @@ class _PromoBanner extends StatelessWidget {
                     vertical: 3,
                   ),
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.2),
+                    color: Colors.white.withValues(alpha: 0.2),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: const Text(

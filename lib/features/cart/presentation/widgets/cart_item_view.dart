@@ -42,7 +42,7 @@ class CartItemView extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.05),
+              color: Colors.black.withValues(alpha: 0.05),
               blurRadius: 16,
               offset: const Offset(0, 4),
             ),
@@ -63,7 +63,7 @@ class CartItemView extends StatelessWidget {
                 child: Image.asset(
                   image,
                   fit: BoxFit.contain,
-                  errorBuilder: (_, __, ___) => const Icon(
+                  errorBuilder: (_, _, _) => const Icon(
                     Icons.fastfood_outlined,
                     size: 40,
                     color: Colors.grey,
@@ -102,7 +102,7 @@ class CartItemView extends StatelessWidget {
                             width: 28,
                             height: 28,
                             decoration: BoxDecoration(
-                              color: Colors.red.withOpacity(0.08),
+                              color: Colors.red.withValues(alpha: 0.08),
                               shape: BoxShape.circle,
                             ),
                             child: const Icon(
@@ -181,7 +181,7 @@ class _CounterPill extends StatelessWidget {
     return Container(
       height: 36,
       decoration: BoxDecoration(
-        color: AppColors.primary.withOpacity(0.08),
+        color: AppColors.primary.withValues(alpha: 0.08),
         borderRadius: BorderRadius.circular(50),
       ),
       child: Row(

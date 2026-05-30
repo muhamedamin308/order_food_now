@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:order_now/core/constants/app_colors.dart';
 import 'package:order_now/features/auth/presentation/pages/edit_profile_page.dart';
+import 'package:order_now/features/auth/presentation/pages/login_page.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -127,7 +128,7 @@ class ProfilePage extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 44,
-                backgroundColor: AppColors.primary.withOpacity(0.12),
+                backgroundColor: AppColors.primary.withValues(alpha: .12),
                 child: Icon(
                   CupertinoIcons.person_fill,
                   size: 48,
@@ -175,7 +176,7 @@ class ProfilePage extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 5),
             decoration: BoxDecoration(
-              color: AppColors.primary.withOpacity(0.1),
+              color: AppColors.primary.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(20),
             ),
             child: Row(
@@ -219,7 +220,7 @@ class _StatsRow extends StatelessWidget {
         borderRadius: BorderRadius.circular(18),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.04),
+            color: Colors.black.withValues(alpha: .04),
             blurRadius: 10,
             offset: const Offset(0, 3),
           ),
@@ -298,7 +299,7 @@ class _MenuSection extends StatelessWidget {
               borderRadius: BorderRadius.circular(16),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.04),
+                  color: Colors.black.withValues(alpha: 0.04),
                   blurRadius: 8,
                   offset: const Offset(0, 2),
                 ),
@@ -362,7 +363,7 @@ class _MenuItem extends StatelessWidget {
                   width: 36,
                   height: 36,
                   decoration: BoxDecoration(
-                    color: AppColors.primary.withOpacity(0.08),
+                    color: AppColors.primary.withValues(alpha: 0.08),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Icon(icon, size: 18, color: AppColors.primary),
@@ -441,7 +442,7 @@ class _MiniToggleState extends State<_MiniToggle> {
       child: Switch(
         value: _value,
         onChanged: (v) => setState(() => _value = v),
-        activeColor: AppColors.primary,
+        activeThumbColor: AppColors.primary,
         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       ),
     );
@@ -454,12 +455,17 @@ class _LogoutButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (e) => LoginPage()),
+        );
+      },
       child: Container(
         width: double.infinity,
         height: 52,
         decoration: BoxDecoration(
-          color: Colors.red.withOpacity(0.07),
+          color: Colors.red.withValues(alpha: 0.07),
           borderRadius: BorderRadius.circular(16),
         ),
         child: Row(

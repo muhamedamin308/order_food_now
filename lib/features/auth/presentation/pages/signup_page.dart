@@ -1,7 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:order_now/core/constants/app_colors.dart';
+import 'package:order_now/core/network/api_error.dart';
+import 'package:order_now/features/auth/data/repository/auth_repository.dart';
 import 'package:order_now/features/auth/presentation/pages/login_page.dart';
 import 'package:order_now/root.dart';
+import 'package:order_now/shared/widgets/custom_snackbar.dart';
 
 import '../../../../shared/widgets/custom_primary_button.dart';
 import '../../../../shared/widgets/custom_text_field.dart';
@@ -19,6 +23,38 @@ class _SignupPageState extends State<SignupPage> {
   final TextEditingController _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool _obscurePassword = true;
+  AuthRepository authRepository = AuthRepository();
+  bool isLoading = false;
+
+  Future<void> register() async {
+    setState(() => isLoading = true);
+    try {
+      final user = await authRepository.register(
+        _nameController.text.trim(),
+        _emailController.text.trim(),
+        _passwordController.text.trim(),
+      );
+      if (user != null) {
+        setState(() => isLoading = false);
+        if (mounted) {
+          CustomSnackBar.showSuccess(context, 'Account created successfully');
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (e) => Root()),
+          );
+        }
+      }
+    } catch (e) {
+      setState(() => isLoading = false);
+      String errorMessage = 'error in registration';
+      if (e is ApiError) {
+        errorMessage = e.toString();
+      }
+      if (mounted) {
+        CustomSnackBar.showError(context, errorMessage);
+      }
+    }
+  }
 
   @override
   void dispose() {
@@ -30,9 +66,7 @@ class _SignupPageState extends State<SignupPage> {
 
   void _handleSignup() {
     if (_formKey.currentState!.validate()) {
-      Navigator.of(
-        context,
-      ).pushReplacement(MaterialPageRoute(builder: (context) => Root()));
+      register();
     }
   }
 
@@ -61,7 +95,6 @@ class _SignupPageState extends State<SignupPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: MediaQuery.of(context).size.height * 0.1),
-                  // App Title
                   Center(
                     child: Text(
                       'Order Now',
@@ -108,7 +141,6 @@ class _SignupPageState extends State<SignupPage> {
                       return null;
                     },
                   ),
-                  // const SizedBox(height: 24),
                   const SizedBox(height: 8),
                   CustomTextField(
                     controller: _passwordController,
@@ -128,26 +160,35 @@ class _SignupPageState extends State<SignupPage> {
                     },
                   ),
                   const SizedBox(height: 32),
-                  // Login Button
-                  CustomPrimaryButton(
-                    text: 'Sign Up',
-                    onPressed: _handleSignup,
-                    backgroundColor: AppColors.primary,
-                    textColor: AppColors.background,
-                  ),
+
+                  isLoading
+                      ? Center(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            child: CupertinoActivityIndicator(
+                              color: AppColors.primary,
+                            ),
+                          ),
+                        )
+                      : CustomPrimaryButton(
+                          text: 'Sign Up',
+                          onPressed: _handleSignup,
+                          backgroundColor: AppColors.primary,
+                          textColor: AppColors.background,
+                        ),
                   const SizedBox(height: 24),
-                  // Sign Up Link
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Don't have an account? ",
+                        "Already have an account? ",
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
                       GestureDetector(
                         onTap: _navigateToLogin,
                         child: Text(
-                          'Sign Up',
+                          'Login Now',
                           style: Theme.of(context).textTheme.bodyMedium
                               ?.copyWith(
                                 color: AppColors.primary,

@@ -31,7 +31,7 @@ class _ProductCustomizeHeaderState extends State<ProductCustomizeHeader> {
             borderRadius: BorderRadius.circular(24),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.08),
+                color: Colors.black.withValues(alpha: 0.08),
                 blurRadius: 20,
                 offset: const Offset(0, 6),
               ),
@@ -50,7 +50,7 @@ class _ProductCustomizeHeaderState extends State<ProductCustomizeHeader> {
                   width: 155,
                   height: 210,
                   fit: BoxFit.contain,
-                  errorBuilder: (_, __, ___) => Container(
+                  errorBuilder: (_, _, _) => Container(
                     width: 155,
                     height: 210,
                     color: Colors.grey.shade100,

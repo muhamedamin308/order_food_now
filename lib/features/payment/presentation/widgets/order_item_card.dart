@@ -1,6 +1,3 @@
-// ── Order Item Card ────────────────────────────────────
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:order_now/features/payment/presentation/widgets/checkout_card.dart';
 
@@ -22,7 +19,7 @@ class OrderItemCard extends StatelessWidget {
               child: Image.asset(
                 'assets/images/burger_logo.png',
                 fit: BoxFit.contain,
-                errorBuilder: (_, __, ___) => const Icon(
+                errorBuilder: (_, _, _) => const Icon(
                   Icons.fastfood_outlined,
                   color: Colors.grey,
                   size: 32,

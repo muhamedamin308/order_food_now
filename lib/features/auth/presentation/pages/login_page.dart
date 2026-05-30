@@ -1,7 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:order_now/core/constants/app_colors.dart';
+import 'package:order_now/core/network/api_error.dart';
+import 'package:order_now/features/auth/data/repository/auth_repository.dart';
 import 'package:order_now/features/auth/presentation/pages/signup_page.dart';
 import 'package:order_now/root.dart';
+import 'package:order_now/shared/widgets/custom_snackbar.dart';
+import 'package:order_now/shared/widgets/custom_text.dart';
 
 import '../../../../shared/widgets/custom_primary_button.dart';
 import '../../../../shared/widgets/custom_text_field.dart';
@@ -16,8 +21,40 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  AuthRepository authRepository = AuthRepository();
+
   final _formKey = GlobalKey<FormState>();
   bool _obscurePassword = true;
+  bool isLoading = false;
+
+  Future<void> login() async {
+    setState(() => isLoading = true);
+    try {
+      final user = await authRepository.login(
+        _emailController.text.trim(),
+        _passwordController.text.trim(),
+      );
+      if (user != null) {
+        setState(() => isLoading = false);
+        if (mounted) {
+          CustomSnackBar.showSuccess(context, 'Logged in successfully');
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (e) => Root()),
+          );
+        }
+      }
+    } catch (e) {
+      setState(() => isLoading = false);
+      String errorMessage = 'error in login';
+      if (e is ApiError) {
+        errorMessage = e.toString();
+      }
+      if (mounted) {
+        CustomSnackBar.showError(context, errorMessage);
+      }
+    }
+  }
 
   @override
   void dispose() {
@@ -28,16 +65,14 @@ class _LoginPageState extends State<LoginPage> {
 
   void _handleLogin() {
     if (_formKey.currentState!.validate()) {
-      Navigator.of(
-        context,
-      ).pushReplacement(MaterialPageRoute(builder: (context) => const Root()));
+      login();
     }
   }
 
   void _navigateToSignUp() {
-    Navigator.of(
-      context,
-    ).pushReplacement(MaterialPageRoute(builder: (context) => const SignupPage()));
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(builder: (context) => const SignupPage()),
+    );
   }
 
   @override
@@ -84,6 +119,7 @@ class _LoginPageState extends State<LoginPage> {
                   CustomTextField(
                     label: 'Email',
                     hint: 'Enter your email',
+                    controller: _emailController,
                     prefixIcon: Icons.email_outlined,
                     keyboardType: TextInputType.emailAddress,
                     isRequired: true,
@@ -97,6 +133,7 @@ class _LoginPageState extends State<LoginPage> {
                   CustomTextField(
                     label: 'Password',
                     hint: 'Enter your password',
+                    controller: _passwordController,
                     prefixIcon: Icons.lock_outline,
                     suffixIcon: _obscurePassword
                         ? Icons.visibility_off
@@ -112,12 +149,21 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   const SizedBox(height: 32),
                   // Login Button
-                  CustomPrimaryButton(
-                    text: 'Login',
-                    onPressed: _handleLogin,
-                    backgroundColor: AppColors.primary,
-                    textColor: AppColors.background,
-                  ),
+                  isLoading
+                      ? Center(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            child: CupertinoActivityIndicator(
+                              color: AppColors.primary,
+                            ),
+                          ),
+                        )
+                      : CustomPrimaryButton(
+                          text: 'Login',
+                          onPressed: _handleLogin,
+                          backgroundColor: AppColors.primary,
+                          textColor: AppColors.background,
+                        ),
                   const SizedBox(height: 24),
                   // Sign Up Link
                   Row(
@@ -153,9 +199,9 @@ class _LoginPageState extends State<LoginPage> {
                       child: Text(
                         'Continue as a Guest',
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              color: AppColors.primary,
-                              fontWeight: FontWeight.bold,
-                            ),
+                          color: AppColors.primary,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),

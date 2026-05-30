@@ -5,7 +5,12 @@ class PriceRow extends StatelessWidget {
   final String value;
   final Color? valueColor;
 
-  const PriceRow({required this.label, required this.value, this.valueColor});
+  const PriceRow({
+    super.key,
+    required this.label,
+    required this.value,
+    this.valueColor,
+  });
 
   @override
   Widget build(BuildContext context) {
